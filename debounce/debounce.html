@@ -1,0 +1,20 @@
+<!-- https://learn.javascript.ru/call-apply-decorators -->
+<!doctype html>
+<meta charset="UTF-8">
+<script src="https://ru.js.cx/test/libs.js"></script>
+<script src="test.js"></script>
+<script>
+
+    function debounce(func, interval) {
+        return function wrapper(...args) {
+            const currentTime = Date.now();
+            if (wrapper.lastExec === undefined || (currentTime - wrapper.lastExec) > interval) {
+                func?.call(this, ...args);
+                wrapper.lastExec = currentTime;
+            }
+        }
+    }
+
+</script>
+
+</html>
