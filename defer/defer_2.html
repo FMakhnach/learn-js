@@ -1,0 +1,22 @@
+<!-- https://learn.javascript.ru/native-prototypes -->
+
+<!doctype html>
+<meta charset="UTF-8">
+<script src="https://ru.js.cx/test/libs.js"></script>
+<script src="test.js"></script>
+<script>
+
+    function f(a, b) {
+        alert(a + b);
+    }
+
+    Function.prototype.defer = function (delay) {
+        return (...args) =>
+            setTimeout(() => this?.call(this, ...args), delay)
+    }
+
+    f.defer(1000)(1, 2); // выведет 3 через 1 секунду.
+
+</script>
+
+</html>
